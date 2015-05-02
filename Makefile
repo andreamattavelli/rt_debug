@@ -13,12 +13,11 @@
 ##  
 ##  You should have received a copy of the GNU General Public License
 ##  along with this Makefile.  If not, see <http://www.gnu.org/licenses/>
+
+include conf.mk
  
  .PHONY: all init compile clean veryclean
 .SILENT:
-
-JAVA_ROOT=
-JAVAC_FLAGS=-g -source 7 -target 7
 
 all: init compile rt-debug.jar
 
@@ -49,7 +48,7 @@ rt-debug: rt
 compile: src rt.jar out-rt-debug src/files-to-compile
 	@echo "** Compiling source code"
 	cd src; \
-	javac $(JAVAC_FLAGS) -d ../out-rt-debug -cp ../rt.jar @files-to-compile > $@.log 2>&1
+	$(JAVAC) $(JAVAC_FLAGS) -d ../out-rt-debug -cp ../rt.jar @files-to-compile > $@.log 2>&1
 
 out-rt-debug:
 	rm -rf out-rt-debug
@@ -67,7 +66,7 @@ rt-debug.jar: compile out-rt-debug rt-debug
 	cd out-rt-debug; \
 	find .|cpio -pdmu ../rt-debug
 	cd rt-debug; \
-	jar cf ../$@ *
+	$(JAR) cf ../$@ *
 
 
 ## clean targets --------------------------------------------------------------
