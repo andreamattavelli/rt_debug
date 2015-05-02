@@ -15,9 +15,9 @@
 ##  along with this Makefile.  If not, see <http://www.gnu.org/licenses/>
 
 include conf.mk
- 
+
  .PHONY: all init compile clean veryclean
-.SILENT:
+#.SILENT:
 
 all: init compile rt-debug.jar
 
@@ -75,3 +75,6 @@ clean:
 
 veryclean: clean
 	rm -rf rt src
+
+veryveryclean: veryclean
+	rm src.zip rt.jar
