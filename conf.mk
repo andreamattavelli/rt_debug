@@ -15,14 +15,15 @@
 ##  along with this Makefile.  If not, see <http://www.gnu.org/licenses/>
 
 ## set java root directory (e.g. on Mac /Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home)
-JAVA_ROOT=
+JAVAROOT=
 
 # set java paths 
 JAVABINDIR=$(JAVAROOT)/bin
-JAVALIBDIR=$(JAVAROOT)/jre/lib
+JAVALIBDIR=$(JAVAROOT)/lib
 
 JAVA=$(JAVABINDIR)/java
 JAR=$(JAVABINDIR)/jar
 
 JAVAC=$(JAVABINDIR)/javac
-JAVAC_FLAGS=-g -source 7 -target 7
+JAVAC_FLAGS=-g -source 8 -target 8
+JAVATOOLS=$(JAVALIBDIR)/tools.jar

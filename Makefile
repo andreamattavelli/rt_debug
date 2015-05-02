@@ -16,8 +16,8 @@
 
 include conf.mk
 
- .PHONY: all init compile clean veryclean
-#.SILENT:
+ .PHONY: all init compile clean veryclean veryveryclean
+.SILENT:
 
 all: init compile rt-debug.jar
 
@@ -30,7 +30,7 @@ src: src.zip
 
 src.zip:
 	@echo "** Copying src.zip"
-	cp $(JAVA_ROOT)/$@ .
+	cp $(JAVAROOT)/$@ .
 
 rt: rt.jar
 	@echo "** Extracting RT class files"
@@ -38,7 +38,7 @@ rt: rt.jar
 
 rt.jar:
 	@echo "** Copying RT jar file"
-	cp $(JAVA_ROOT)/jre/lib/$@ .
+	cp $(JAVAROOT)/jre/lib/$@ .
 
 rt-debug: rt
 	@echo "** Copying RT class files to $@"
@@ -48,7 +48,7 @@ rt-debug: rt
 compile: src rt.jar out-rt-debug src/files-to-compile
 	@echo "** Compiling source code"
 	cd src; \
-	$(JAVAC) $(JAVAC_FLAGS) -d ../out-rt-debug -cp ../rt.jar @files-to-compile > $@.log 2>&1
+	$(JAVAC) $(JAVAC_FLAGS) -d ../out-rt-debug -cp ../rt.jar:$(JAVATOOLS) @files-to-compile > $@.log 2>&1
 
 out-rt-debug:
 	rm -rf out-rt-debug
@@ -77,4 +77,4 @@ veryclean: clean
 	rm -rf rt src
 
 veryveryclean: veryclean
-	rm src.zip rt.jar
+	rm src.zip rt.jar rt-debug.jar
