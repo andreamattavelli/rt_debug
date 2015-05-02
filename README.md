@@ -3,6 +3,7 @@
 Makefile to recompile the JDK runtime (rt.jar) with all debugging information.
 
 The project is composed of two files:
+
 1. `Makefile` that contains the commands to compile the Runtime library 
 2. `conf.mk` that contains the configuration options for Java
 
