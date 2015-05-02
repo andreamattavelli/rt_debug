@@ -14,9 +14,28 @@ In `conf.mk` it is sufficient to copy-paste your Java root directory to JAVA_ROO
 For example, on Mac OS X, it is possible to retrieve the Java root with this command (it requires XCode):
 
 ```
-~$ /usr/libexec/java_home
+rt_debug$ /usr/libexec/java_home
 /Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 ```
 
-
 **NOTE**: by properly combining the configuration options in `conf.mk` you can also recompile the JDK runtime with other compilers or static analysis tools.
+
+## Run!
+
+```
+rt_debug$ make
+** Copying src.zip
+** Extracting JDK source files
+** Copying RT jar file
+** Extracting RT class files
+** Copying RT class files to rt-debug
+** Creating src/files-to-compile
+** Compiling source code
+** Creating rt-debug.jar
+```
+If the make process succeed, you should find a `rt-dedug.jar` in the current directory.
+
+### Additional commands
+* `clean` - deletes working directories
+* `veryclean` - deletes also rt and src directories
+* `veryveryclean` - deletes **all**, rt-debug.jar included!
