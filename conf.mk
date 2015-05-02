@@ -14,22 +14,12 @@
 ##  You should have received a copy of the GNU General Public License
 ##  along with this Makefile.  If not, see <http://www.gnu.org/licenses/>
 
-UNAME=$(shell uname)
-SHELL:=/bin/bash
-
-## set java root directory (e.g. on Mac /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents)
+## set java root directory (e.g. on Mac /Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home)
 JAVA_ROOT=
 
-# set java paths depending on the operating system
-ifeq ($(UNAME),Darwin)
-JAVABINDIR=$(JAVAROOT)/Commands
-JAVALIBDIR=$(JAVAROOT)/Resources
-export JAVA_HOME=$(/usr/libexec/java_home)
-else
+# set java paths 
 JAVABINDIR=$(JAVAROOT)/bin
 JAVALIBDIR=$(JAVAROOT)/jre/lib
-export JAVA_HOME=$(JAVAROOT)
-endif
 
 JAVA=$(JAVABINDIR)/java
 JAR=$(JAVABINDIR)/jar
