@@ -1,6 +1,6 @@
 # rt_debug
 
-Makefile to recompile the JDK runtime (rt.jar) with all debugging information.
+A Makefile to recompile the HotSpot JDK library (rt.jar) with debugging information. 
 
 The project is composed of two files:
 
